@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?scenebuilder-background-color 0x00ff29ff?>
+
+<VBox fx:id="root" prefHeight="493.0" prefWidth="712.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.hs.settlers.gui.LobbyViewController">
+  <children>
+    <GridPane id="GridPane">
+      <children>
+        <ImageView fx:id="settlersLogoWide" fitHeight="57.0" fitWidth="510.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+          <GridPane.margin>
+            <Insets bottom="15.0" top="15.0" />
+          </GridPane.margin>
+        </ImageView>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <SplitPane id="splitPaneH" dividerPositions="0.6262295081967213" focusTraversable="true" prefHeight="160.0" prefWidth="200.0" style="&#10;" VBox.vgrow="ALWAYS">
+      <items>
+        <SplitPane id="splitPaneV" dividerPositions="0.5909090909090909" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+          <items>
+            <VBox fx:id="gameListLayout" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+              <children>
+                <TableView fx:id="gameList" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                	
+                  <columns>
+                    <TableColumn prefWidth="134.0" text="Game Title" fx:id="gameTitleColumn" />
+                    <TableColumn id="tableColumnPlayers"  prefWidth="70.0" text="Players" fx:id="amountOfPlayersColumn" />
+                    <TableColumn id="tableColumnPlayers"  prefWidth="141.0" text="Map" fx:id="mapColumn" />
+                    <TableColumn id="tableColumnPlayers"  prefWidth="77.0" text="Status" fx:id="statusColumn" />
+                  </columns>
+                </TableView>
+                <FlowPane fx:id="filterPane" hgap="10.0" prefWidth="200.0" vgap="5.0" VBox.vgrow="NEVER">
+                  <children>
+                    <TextField fx:id="filterTextField" onKeyReleased="#filterOnKeyReleased" prefWidth="200.0" promptText="Search" />
+                    <CheckBox id="filterCheckBox" fx:id="filterFullCheckBox" mnemonicParsing="false" onAction="#filterFullGamesAction" text="Not full" />
+                    <CheckBox fx:id="filterStartedCheckBox" mnemonicParsing="false" onAction="#filterStartedGamesAction" text="Not started" />
+                    <ComboBox fx:id="filterMapComboBox" onAction="#filterMapAction" prefWidth="113.0" promptText="Filter Maps">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ComboBox>
+                  </children>
+                  <padding>
+                    <Insets left="5.0" right="5.0" />
+                  </padding>
+                </FlowPane>
+                <HBox alignment="TOP_RIGHT" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
+                  <children>
+                    <Button fx:id="refreshButton" mnemonicParsing="false" onAction="#refreshGamesAction" text="Refresh" />
+                    <Button fx:id="filterToggleButton" mnemonicParsing="false" onAction="#onFilterToggleAction" text="Show Filter" />
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" right="5.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox id="LobbyChat" alignment="CENTER" spacing="5.0">
+              <children>
+                <TabPane fx:id="chatTabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
+                <HBox prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
+                  <children>
+                    <TextField fx:id="chatTextField" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    <Button fx:id="sendButton" mnemonicParsing="false" onAction="#onSendAction" text="Send" />
+                  </children>
+                  <padding>
+                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                  </padding>
+                </HBox>
+              </children>
+            </VBox>
+          </items>
+        </SplitPane>
+        <VBox id="vboxLobby" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+          <children>
+            <Button fx:id="createGameButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onCreateGameAction" text="Create game">
+              <VBox.margin>
+                <Insets fx:id="x1" />
+              </VBox.margin>
+            </Button>
+            <Button fx:id="MapManagerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMapManagerAction" text="Map Manager" />
+            <Button fx:id="logoutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLogoutAction" text="Logout" VBox.margin="$x1" />
+            <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+              <children>
+                <Accordion fx:id="detailAccordion">
+                  <expandedPane>
+                    <TitledPane id="x2" fx:id="gamePane" animated="false" text="Game">
+                      <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                          <children>
+                            <Rectangle fx:id="gamePreview" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="120.0" stroke="BLACK" strokeType="INSIDE" width="120.0" />
+                            <TextArea fx:id="gameInfo" editable="false" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS" />
+                            <Button fx:id="joinGameButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onJoinAction" text="Join Game" />
+                            <Button id="createGameButton" fx:id="watchGameButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Watch Game" />
+                          </children>
+                          <padding>
+                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                          </padding>
+                        </VBox>
+                      </content>
+                    </TitledPane>
+                  </expandedPane>
+                  <panes>
+                    <TitledPane fx:id="playersPane" animated="false" text="Players">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                            <ListView fx:id="globalPlayerList" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                          </children>
+                        </AnchorPane>
+                      </content>
+                    </TitledPane>
+                    <fx:reference source="gamePane" />
+                  </panes>
+                </Accordion>
+              </children>
+            </StackPane>
+          </children>
+          <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+          </padding>
+        </VBox>
+      </items>
+    </SplitPane>
+  </children>
+  <padding>
+    <Insets bottom="50.0" left="50.0" right="50.0" />
+  </padding>
+  <stylesheets>
+    <URL value="@../styles/LobbyGui.css" />
+  </stylesheets>
+</VBox>

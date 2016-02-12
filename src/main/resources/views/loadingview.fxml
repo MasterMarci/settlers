@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<HBox fx:id="root" alignment="CENTER" prefHeight="365.0" prefWidth="410.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.hs.settlers.gui.LoadingViewController">
+  <children>
+    <VBox alignment="CENTER" prefHeight="365.0" prefWidth="208.0" HBox.hgrow="ALWAYS">
+      <children>
+        <Label fx:id="statusLabel" prefWidth="128.0" text="Loading ...">
+          <graphic>
+            <ProgressIndicator />
+          </graphic>
+        </Label>
+      </children>
+    </VBox>
+  </children>
+  <stylesheets>
+    <URL value="@../styles/loadingView.css" />
+  </stylesheets>
+</HBox>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+
+<AnchorPane id="AnchorPane" fx:id="root" disable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="843.0" xmlns:fx="http://javafx.com/fxml" fx:controller="de.hs.settlers.gui.GameViewController">
+  <children>
+    <AnchorPane id="Content" fx:id="mapViewPane" minHeight="0.0" minWidth="0.0" onMouseDragged="#onFieldPanning" onMouseReleased="#onFieldPanFinish" onScroll="#onFieldScroll" prefHeight="353.0" prefWidth="408.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0" />
+    <HBox alignment="CENTER" prefHeight="24.0" prefWidth="600.0" styleClass="resource-bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+        <Button fx:id="inventoryButton" mnemonicParsing="false" text="Inventory" />
+        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+      </children>
+    </HBox>
+    <Circle fill="DODGERBLUE" radius="46.5" stroke="BLACK" strokeType="INSIDE" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <TabPane prefHeight="200.0" prefWidth="200.0" rotateGraphic="false" side="RIGHT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-164.0" AnchorPane.topAnchor="24.0">
+      <tabs>
+        <Tab text="Untitled Tab 1">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+        <Tab text="Untitled Tab 2">
+          <content>
+            <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          </content>
+        </Tab>
+      </tabs>
+    </TabPane>
+    <VBox id="" fx:id="chatBox" alignment="CENTER" prefHeight="141.0" prefWidth="377.0" spacing="5.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="50.0">
+      <children>
+        <TabPane fx:id="chatTabs" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" />
+        <HBox id="chatBox" prefWidth="200.0" spacing="10.0" VBox.vgrow="NEVER">
+          <children>
+            <TextField fx:id="chatTextField" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button id="sendButton" fx:id="chatSendButton" mnemonicParsing="false" onAction="#onSendAction" text="Send" />
+          </children>
+          <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" />
+          </padding>
+        </HBox>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>

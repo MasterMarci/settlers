@@ -1,0 +1,5 @@
+.error {
+	-fx-text-fill: red;
+	-fx-content-display: text-only;
+}
+

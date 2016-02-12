@@ -1,0 +1,257 @@
+#centralPane {
+    -fx-background-image: url("../images/loginbg.jpg");
+	-fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+.root, #gameCreateRoot  {
+	-fx-font-family: "IMMORTAL";
+	-fx-font-size: 15pt, bold;
+	-fx-background-color: transparent ;
+	-fx-font-color: #333333;
+	-fx-mark-color: ladder(
+        -fx-color,
+        white 30%,
+        derive(-fx-color,-63%) 31%
+    );
+}
+.text-field:focused {
+	-fx-background-color: rgb(180, 100, 60, 0.7), rgb(0, 0, 0, 0.2), rgb(255, 255, 255);
+	-fx-background-insets: -1.4, 0, 1;
+  	-fx-background-radius: 1.4, 0, 0;
+ 	-fx-padding: 2 2 2 5;
+}
+.text-area {
+	-fx-background-color: rgb(236, 236, 236);
+	 -fx-text-fill: black;
+	 
+}
+.text-area:focused {
+	-fx-background-color: transparent, transparent, rgb(236, 236, 236);
+	-fx-background-insets: -1.4, 0, 1;
+  	-fx-background-radius: 1.4, 0, 0;
+}
+.button{
+    -fx-background-color: 
+        rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-text-fill: #333333; 
+}
+.button:hover{
+	-fx-background-color: 
+		rgba(255, 255, 255, 0.3),
+        linear-gradient(#fffe00, #ffb538);  
+}
+.button:focused {
+		-fx-background-color: 
+		rgb(180, 100, 60, 0.7),
+		rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius: 3.4, 2, 1, 1;
+}
+#gameCreateRoot {
+	-fx-background-image: url("../images/CreateGameBackground.jpg");
+	-fx-background-repeat: no-repeat;
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+.split-pane {
+    -fx-box-border: rgba(255, 255, 255, 0.3);
+    -fx-border: black;
+    -fx-background-insets: 0, 11;
+    -fx-padding: 15;
+    -fx-border-color: transparent;
+}
+.split-pane-divider {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-box-border: transparent;
+    -fx-border: transparent;
+    -fx-background-insets: 1, 12;
+    -fx-padding: 14;
+    -fx-border-color: transparent;
+}
+#vboxLobby {
+	-fx-background-color: transparent;
+	-fx-border-radius: 20;
+}
+#splitPaneH, #splitPaneV {
+	-fx-background-color: transparent;
+	-fx-background-insets: 0, 0, 0, 0;
+}
+#gameListLayout, #LobbyChat {
+	-fx-background-color: rgba(236, 236, 236, 0.3);
+}
+#LobbyChat {
+	-fx-control-inner-background: rgba(236, 236, 236, 0.6);
+}
+.tab-pane, .tab-header-area, .tab-header-background {
+	-fx-background-color: transparent;
+	-fx-effect: null;
+}
+.titled-pane > .title {
+	-fx-background-color: 
+	rgb(255, 255, 255, 0.3),
+	linear-gradient(#f0ef00, #fea626);
+	-fx-text-fill: black;
+}
+.titled-pane {
+	-fx-background-color: 
+	rgb(255, 255, 255, 0.3),
+	linear-gradient(#f0ef00, #fea626);
+	-fx-control-inner-background: transparent;
+}
+.list-view {
+	-fx-font-size: 14pt;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.list-view:focused {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-cell {
+	-fx-text-fill: black;
+    -fx-background-color: rgba(236, 236, 236, 0.3);
+    -fx-padding: 2;
+    -fx-border-color: transparent;
+}
+.list-cell:odd {
+    -fx-background-color: rgba(255, 255, 255, 0.6);
+}
+.list-cell:focused {
+    -fx-background-color: rgba(180, 100, 60);
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 2;
+}
+.list-cell:odd:focused {
+    -fx-background-color: rgba(180, 100, 60);
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 2;
+}
+
+.check-box .box {
+	-fx-background-color: 
+	    rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius: 3.4, 2, 1, 1;
+}
+.check-box:focused .box {
+	-fx-background-color: 
+		rgb(180, 100, 60, 0.7),
+		rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-background-insets: -1.4, 0, 1, 2;
+    -fx-background-radius: 3.4, 2, 1, 1;
+}
+
+
+
+/*
+ Table
+ */
+.table-view {
+	-fx-background-color: rgba(236, 236, 236, 0.3);
+	-fx-text-fill: black;
+}
+.table-view > .title {
+	-fx-text-fill: black;
+}
+.table-view .column-header-background {
+    -fx-background-color:         
+    	rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-padding: 0;
+    -fx-border-color: transparent;
+}
+.table-view .column-header {
+	-fx-font-size: 16pt;
+	-fx-border-color: transparent;
+	-fx-background-color: transparent;
+}
+#tableColumnPlayers {
+	-fx-border-color:  transparent transparent transparent rgba(236, 236, 236, 0.6);
+}
+.table-row-cell {
+	    -fx-background-color: rgba(236, 236, 236, 0.3);
+	    -fx-text-fill: black;
+}
+.table-row-cell:odd {
+	-fx-background-color: rgba(236, 236, 236, 0.6);
+	-fx-text-fill: black;
+}
+
+.table-view .empty-table {
+    -fx-background-color: 
+    	rgb(236, 236, 236),
+        linear-gradient(#f0ef00, #fea626);
+}
+.table-view:cell-selection  .table-row-cell:filled .table-cell:hover {
+    -fx-background-color: red;
+    -fx-text-fill: blue;
+    -fx-background-insets: 0 0 1 0;
+}
+.table-row-cell:filled:focused:selected {
+    -fx-background-color: rgba(180, 100, 60);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background: blue;
+    -fx-text-fill: yellow;
+}
+.table-cell {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: black;
+}
+.table-cell:selected {
+    -fx-background-color: lightgreen;
+    -fx-text-fill: green;
+}
+
+
+
+/*
+ Tab Pane
+ */
+.tab-pane.floating *.tab:selected {
+    -fx-background-color: rgb(180, 100, 60, 0.7), rgb(0, 0, 0, 0.2), rgb(236, 2536, 236);
+    -fx-background-insets: 0 0 -1 0, 1 1 -1 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+}
+
+.tab:selected {
+    -fx-background-color: 	
+    	rgba(180, 100, 60, 0.7),
+		rgba(255, 255, 255, 0.3),
+        linear-gradient(#f0ef00, #fea626);
+    -fx-background-insets: 0, 1 1 0 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+}
+.ChatTab {
+	    -fx-font-size: 13pt;
+}
+.ChatTab:focused, .combo-box:focused {
+	-fx-background-color: rgba(180, 100, 60, 0.7), rgba(0, 0, 0, 0.2), rgb(236, 236, 236);
+    -fx-background-insets: 0 0 -1 0, 1 1 -1 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+}
+#errorLabel {
+	-fx-background-color: rgba(236, 236, 236, 0.7)
+}
+
+#vboxGameCreate {
+	-fx-background-color: rgba(236, 236, 236, 0.6);
+	-fx-padding: 3;
+	-fx-background-radius: 4;
+}
+#developerLogos {
+	-fx-background-color: rgba(236, 236, 236, 0.3);
+	-fx-background-radius: 4;
+}
