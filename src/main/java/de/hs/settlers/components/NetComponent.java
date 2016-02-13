@@ -128,7 +128,9 @@ public class NetComponent extends AbstractComponent {
 	@Override
 	public void shutdown() {
 		getApplication().getTextCommunicationProtocol().sendMessage(new LogoutMessage());
-		getApplication().getTextCommunicationProtocol().setActive(false);
+
+		if(getApplication().getCurrentState() != getApplication().getStates().NOT_CONNECTED)
+			getApplication().getTextCommunicationProtocol().setActive(false);
 	}
 	
 

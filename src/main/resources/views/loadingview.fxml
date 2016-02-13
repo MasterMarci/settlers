@@ -11,7 +11,7 @@
   <children>
     <VBox alignment="CENTER" prefHeight="365.0" prefWidth="208.0" HBox.hgrow="ALWAYS">
       <children>
-        <Label fx:id="statusLabel" prefWidth="128.0" text="Loading ...">
+        <Label fx:id="statusLabel" prefWidth="165.0" text="Loading ...">
           <graphic>
             <ProgressIndicator />
           </graphic>
