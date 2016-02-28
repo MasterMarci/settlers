@@ -1,5 +1,5 @@
-username: mhesse
-userpasshash: 9ee159ef240478d35105107c210bc59a9e34383b
-serveraddress: se1.cs.uni-kassel.de
-serverport: 5000
+username: testuser
+userpasshash: a94a8fe5ccb19ba61c4c0873d391e987982fbbd3
+serveraddress: 127.0.0.1
+serverport: 4242
 save-password: true
