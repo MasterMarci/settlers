@@ -23,14 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.beust.jcommander.JCommander;
-import com.cathive.fx.guice.GuiceApplication;
-import com.google.inject.Module;
 
 import de.hs.settlers.SettlersApplication;
 import de.hs.settlers.model.Game;

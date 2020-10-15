@@ -11,7 +11,9 @@ import java.util.Timer;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
+import de.hs.settlers.configuration.Configuration;
 import javafx.animation.FadeTransition;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -25,20 +27,16 @@ import javafx.collections.ObservableList;
 import javafx.collections.ObservableSet;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import javax.inject.Inject;
-
-import org.spout.api.exception.ConfigurationException;
+import de.hs.settlers.configuration.ConfigurationException;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
-import com.cathive.fx.guice.GuiceApplication;
-import com.cathive.fx.guice.GuiceFXMLLoader;
-import com.cathive.fx.guice.GuiceFXMLLoader.Result;
-import com.google.inject.Module;
 
 import de.hs.settlers.components.AbstractComponent;
 import de.hs.settlers.components.GuiComponent;
@@ -57,7 +55,7 @@ import de.hs.settlers.state.AbstractState;
 import de.hs.settlers.state.States;
 import de.hs.settlers.util.AssociationUtils;
 
-public class SettlersApplication extends GuiceApplication {
+public class SettlersApplication extends Application {
 	static String[] args;
 
 	@Parameter(names = { "-d", "--debug" })
@@ -67,8 +65,7 @@ public class SettlersApplication extends GuiceApplication {
 	@Parameter(names = {"--renderMap"})
 	public String renderMapFile = null;
 
-	@Inject
-	private GuiceFXMLLoader fxmlLoader;
+	private FXMLLoader fxmlLoader;
 
 	private Timer globalTimer = new Timer();
 
@@ -323,15 +320,17 @@ public class SettlersApplication extends GuiceApplication {
 		if (controller != null) {
 			return controller;
 		}
-		Result result;
+		fxmlLoader = new FXMLLoader(SettlersApplication.class
+				.getResource("/views/" + file));;
+
+		Parent result;
 		try {
-			result = fxmlLoader.load(SettlersApplication.class
-					.getResource("/views/" + file));
+			result = fxmlLoader.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;
 		}
-		controller = result.getController();
+		controller = fxmlLoader.getController();
 		controller.setApplication(this);
 		controller.init();
 		return controller;
@@ -398,12 +397,6 @@ public class SettlersApplication extends GuiceApplication {
 		}
 
 		setViewController(newController);
-	}
-
-	@Override
-	public void init(List<Module> arg0) throws Exception {
-		// TODO Auto-generated method stub
-
 	}
 
 	public Configuration getConfiguration() {

@@ -8,7 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import de.hs.settlers.Configuration;
+import de.hs.settlers.configuration.Configuration;
 import de.hs.settlers.SettlersApplication;
 import de.hs.settlers.model.Player;
 import de.hs.settlers.model.dynamic.DynamicModel;
@@ -90,7 +90,7 @@ public class NetComponent extends AbstractComponent {
 				com.setCommunication(getApplication().getTextCommunicationProtocol());
 				try
 				{
-					sock = new Socket(Configuration.SERVER_ADDRESS.getString(), Configuration.SERVER_PORT.getInt());
+					sock = new Socket(Configuration.SERVER_ADDRESS.getValue(), Configuration.SERVER_PORT.getValue());
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
@@ -99,8 +99,8 @@ public class NetComponent extends AbstractComponent {
 					com.setWriter(new BufferedWriter(new OutputStreamWriter(sock.getOutputStream())));
 				} catch (UnknownHostException e)
 				{
-					newState.displayError("Connection to server failed: " + Configuration.SERVER_ADDRESS.getString()
-							+ " : " + Configuration.SERVER_PORT.getString() + ".\nCheck connection or server settings.");
+					newState.displayError("Connection to server failed: " + Configuration.SERVER_ADDRESS.getValue()
+							+ " : " + Configuration.SERVER_PORT.getValue() + ".\nCheck connection or server settings.");
 					e.printStackTrace();
 				} catch (IOException e)
 				{

@@ -1,5 +1,6 @@
 package de.hs.settlers.gui;
 
+import de.hs.settlers.configuration.ConfigurationException;
 import javafx.animation.FadeTransition;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -18,9 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 
-import org.spout.api.exception.ConfigurationException;
-
-import de.hs.settlers.Configuration;
+import de.hs.settlers.configuration.Configuration;
 import de.hs.settlers.net.message.text.LoginMessage;
 import de.hs.settlers.util.HashUtils;
 
@@ -90,8 +89,8 @@ public class LoginViewController extends ViewController implements EventHandler<
 	public void onShow() {
 		// Get Login Info form File
 
-		usernameInFile = new String(Configuration.USERNAME.getString());
-		passwordInFile = new String(Configuration.PASSWORD.getString());
+		usernameInFile = new String(Configuration.USERNAME.getValue());
+		passwordInFile = new String(Configuration.PASSWORD.getValue());
 
 		
 		if ((passwordInFile.length() == 40 && passwordInFile.matches("[\\dA-Fa-f]+")))
@@ -103,7 +102,7 @@ public class LoginViewController extends ViewController implements EventHandler<
 		}
 		
 		username.setText(usernameInFile);		
-		keeplogin.setSelected(Configuration.SAVE_PASSWORD.getBoolean());
+		keeplogin.setSelected(Configuration.SAVE_PASSWORD.getValue());
 
 		setButtonState(true);
 		
@@ -130,7 +129,7 @@ public class LoginViewController extends ViewController implements EventHandler<
 		String password = "";
 		
 		if (username.equals(usernameInFile)) {
-			password = Configuration.PASSWORD.getString();
+			password = Configuration.PASSWORD.getValue();
 		} else {
 			password = this.password.getText();
 		}		

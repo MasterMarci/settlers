@@ -1,14 +1,14 @@
 package de.hs.settlers.net.event;
 
-import org.spout.api.util.list.concurrent.ConcurrentList;
-
 import de.hs.settlers.net.event.NetworkErrorListener.UnexpectedError;
 import de.hs.settlers.net.message.ClientMessage;
 import de.hs.settlers.net.message.ServerMessage;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 public class NetworkEventManager {
-	private ConcurrentList<NetworkEventListener<?>> successListeners = new ConcurrentList<>();
-	private ConcurrentList<NetworkErrorListener<?>> errorListeners = new ConcurrentList<>();
+	private CopyOnWriteArrayList<NetworkEventListener<?>> successListeners = new CopyOnWriteArrayList<>();
+	private CopyOnWriteArrayList<NetworkErrorListener<?>> errorListeners = new CopyOnWriteArrayList<>();
 
 	/**
 	 * Registers a success event listener
@@ -18,7 +18,7 @@ public class NetworkEventManager {
 	 */
 	public void registerListener(NetworkEventListener<?> listener) {
 		synchronized (successListeners) {
-			successListeners.addDelayed(listener);
+			successListeners.add(listener);
 		}
 	}
 
@@ -30,7 +30,7 @@ public class NetworkEventManager {
 	 */
 	public void unregisterListener(NetworkEventListener<?> listener) {
 		synchronized (successListeners) {
-			successListeners.removeDelayed(listener);
+			successListeners.remove(listener);
 		}
 	}
 
@@ -42,7 +42,7 @@ public class NetworkEventManager {
 	 */
 	public void registerListener(NetworkErrorListener<?> listener) {
 		synchronized (errorListeners) {
-			errorListeners.addDelayed(listener);
+			errorListeners.add(listener);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class NetworkEventManager {
 	 */
 	public void unregisterListener(NetworkErrorListener<?> listener) {
 		synchronized (errorListeners) {
-			errorListeners.removeDelayed(listener);
+			errorListeners.remove(listener);
 		}
 	}
 
@@ -68,7 +68,6 @@ public class NetworkEventManager {
 		Class<?> type = message.getClass();
 
 		synchronized (successListeners) {
-			successListeners.sync();
 			for (NetworkEventListener<?> listener : successListeners) {
 				if (listener.getType().isAssignableFrom(type)) {
 					try {
@@ -78,7 +77,6 @@ public class NetworkEventManager {
 					}
 				}
 			}
-			successListeners.sync();
 		}
 	}
 
@@ -95,7 +93,6 @@ public class NetworkEventManager {
 		Class<?> type = message != null ? message.getClass() : UnexpectedError.class;
 
 		synchronized (errorListeners) {
-			errorListeners.sync();
 			for (NetworkErrorListener<?> listener : errorListeners) {
 				if (listener.getType().isAssignableFrom(type)) {
 					try {
@@ -105,7 +102,6 @@ public class NetworkEventManager {
 					}
 				}
 			}
-			errorListeners.sync();
 		}
 	}
 }
